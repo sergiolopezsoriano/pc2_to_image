@@ -3,5 +3,4 @@
   <node name="pc2_to_image" pkg="pc2_to_image" type="pc2_to_image.py" output="screen">
     <rosparam file="$(find pc2_to_image)/config/pc2_to_image.yaml" command="load"/>
   </node>
-  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find pc2_to_image)/rviz/config.rviz"/>
 </launch>
