@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 <launch>
-  <node name="pc2_to_image" pkg="pc2_to_image" type="pc2_to_image.py" output="screen">
-    <rosparam file="$(find pc2_to_image)/config/pc2_to_image.yaml" command="load"/>
+  <arg name="robot_ns" default="$(env ROBOT_NS)"/>
+  <arg name="tf_prefix" default="$(env ROBOT_TF_PREFIX)"/>
+  <node name="pc2_to_image" pkg="pc2_to_image" type="pc2_to_image_real.py" output="screen">
+    <param name="robot_ns" value="$(arg robot_ns)"/>
+    <rosparam file="$(find pc2_to_image)/config/pc2_to_image.yaml" command="load" subst_value="True">
+      $(arg tf_prefix)
+    </rosparam>
   </node>
 </launch>

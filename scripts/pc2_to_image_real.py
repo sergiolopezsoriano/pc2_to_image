@@ -14,14 +14,13 @@ import cv_bridge
 
 class Pointcloud2Image:
     def __init__(self):
-        # ROS Params
-        # self.namespace = rospy.get_namespace().strip('/')
+        self.robot_ns = rospy.get_param('~robot_ns')
         self.sensor_frame = rospy.get_param('~sensor_frame')
         self.path = RosPack().get_path('pc2_to_image')
-        rospy.Subscriber('/camera/depth_registered/points', PointCloud2, self.cb_point_cloud, queue_size=1,
-                         buff_size=52428800)
+        rospy.Subscriber('/' + self.robot_ns + '/camera/depth_registered/points', PointCloud2, self.cb_point_cloud,
+                         queue_size=1, buff_size=52428800)
         self.pc2_received = False
-        self.image_publisher = rospy.Publisher('/camera/rgb/image_raw', Img, queue_size=1)
+        self.image_publisher = rospy.Publisher('/' + self.robot_ns + '/camera/rgb/image_raw', Img, queue_size=1)
 
     def cb_point_cloud(self, ros_point_cloud):
         xyz = np.array([[0, 0, 0]])

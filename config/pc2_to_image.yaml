@@ -1,1 +1,1 @@
-sensor_frame: 'laser_link'
+sensor_frame: $(arg tf_prefix)/cyglidar_link

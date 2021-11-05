@@ -16,11 +16,3 @@ bridge = CvBridge()
 cv_image = bridge.imgmsg_to_cv2(msg, desired_encoding='passthrough')
 bag.close()
 
-
-# Get the image with the bounding boxes
-# rospy.Subscriber('/darknet_ros/detection_image', Img, self.cb_detection_image, queue_size=1)
-#
-# def cb_detection_image(self, imgmsg):
-#     cvbridge = cv_bridge.CvBridge()
-#     array = cvbridge.imgmsg_to_cv2(imgmsg)
-#     cv2.imshow('detection', array)
